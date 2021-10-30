@@ -1,4 +1,4 @@
-HELP_TEXT = """__**LIMINOUS MUSIC BOT**__
+HELP_TEXT = """__**LUMINOUS MUSIC BOT**__
 
 **/skip** __Skip The Current Playing Music.__
 **/play** __Service_Or_Default (Services: youtube/saavn, Default: youtube) Song_Name | Reply_To_Audio__
