@@ -322,7 +322,7 @@ async def clear_queue(_, message):
     if ("queue" not in db or db["queue"].empty()) and (
         "playlist" not in db or not db["playlist"]
     ):
-        return await message.reply_text("**Queue Already is Empty**")
+        return await message.reply_text("**Queue is Already Empty**")
     db["playlist"] = False
     db["queue"] = asyncio.Queue()
     await message.reply_text("**Successfully Cleared the Queue**")
