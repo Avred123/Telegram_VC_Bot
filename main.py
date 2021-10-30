@@ -170,7 +170,7 @@ async def skip_func(_, message):
     queue = db["queue"]
     if queue.empty() and ("playlist" not in db or not db["playlist"]):
         await message.reply_text(
-            "__**Queue Is Empty, Just Like Your Life.**__"
+            "__**Queue Is Empty.**__"
         )
         return await message.delete()
     db["skipped"] = True
