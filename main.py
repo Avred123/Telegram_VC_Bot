@@ -256,7 +256,7 @@ async def queue_list(_, message):
     queue = db["queue"]
     if queue.empty():
         return await message.reply_text(
-            "__**Queue Is Empty, Just Like Your Life.**__"
+            "__**Queue Is Empty.**__"
         )
     if (
         len(message.text.split()) > 1
