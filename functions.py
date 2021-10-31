@@ -319,7 +319,7 @@ async def play_song(requested_by, query, message, service):
     )
     os.remove(cover)
     await pause_skip_watcher(m, duration)
-    await m.delete()
+   
 
 
 # Telegram
