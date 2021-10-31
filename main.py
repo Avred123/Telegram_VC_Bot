@@ -83,7 +83,7 @@ async def joinvc(_, message, manual=False):
             )
     await message.reply_text(
         "__**Joined the VC.**__ \n\n**Note:** __If you can't hear anything,"
-        + " Please send /leavevc and then /joinvc again.__"
+        + " please send /leavevc and then /joinvc again.__"
     )
     await message.delete()
 
