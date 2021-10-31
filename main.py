@@ -55,7 +55,7 @@ async def repo(_, message):
 async def joinvc(_, message, manual=False):
     if "call" in db:
         return await message.reply_text(
-            "__**Bot Is Already In The VC**__"
+            "__**Bot is already on the VC**__"
         )
     os.popen(f"cp etc/sample_input.raw {PLAYOUT_FILE}")
     vc = pytgcalls.GroupCallFactory(
@@ -79,11 +79,11 @@ async def joinvc(_, message, manual=False):
         except ChatAdminRequired:
             del db["call"]
             return await message.reply_text(
-                "Make me admin with message delete and vc manage permission"
+                "Make the bot an admin with Delete Messages and Manage Video Chats permissions"
             )
     await message.reply_text(
-        "__**Joined The Voice Chat.**__ \n\n**Note:** __If you can't hear anything,"
-        + " Send /leavevc and then /joinvc again.__"
+        "__**Joined the VC.**__ \n\n**Note:** __If you can't hear anything,"
+        + " Please send /leavevc and then /joinvc again.__"
     )
     await message.delete()
 
@@ -98,7 +98,7 @@ async def leavevc(_, message):
         await db["call"].leave_current_group_call()
         await db["call"].stop()
         del db["call"]
-    await message.reply_text("__**Left The Voice Chat**__")
+    await message.reply_text("__**Left the VC.**__")
     await message.delete()
 
 
@@ -121,7 +121,7 @@ async def volume_bot(_, message):
         await vc.set_my_volume(volume=volume)
     except ValueError:
         return await message.reply_text(usage)
-    await message.reply_text(f"**Volume Set To {volume}**")
+    await message.reply_text(f"**Volume set to {volume}**")
 
 
 @app.on_message(
@@ -170,7 +170,7 @@ async def skip_func(_, message):
     queue = db["queue"]
     if queue.empty() and ("playlist" not in db or not db["playlist"]):
         await message.reply_text(
-            "__**Queue Is Empty.**__"
+            "__**Queue is empty.**__"
         )
         return await message.delete()
     db["skipped"] = True
@@ -199,7 +199,7 @@ __/play Reply_On_Audio__"""
                 return await message.reply_text(usage)
             if "call" not in db:
                 return await message.reply_text(
-                    "**Use /joinvc First!**"
+                    "**Use /joinvc first!**"
                 )
             if message.reply_to_message:
                 if message.reply_to_message.audio:
@@ -226,7 +226,7 @@ __/play Reply_On_Audio__"""
             if "queue" not in db:
                 db["queue"] = asyncio.Queue()
             if not db["queue"].empty() or db.get("running"):
-                await message.reply_text("__**Added To Queue.__**")
+                await message.reply_text("__**Added to queue.__**")
 
             await db["queue"].put(
                 {
@@ -256,7 +256,7 @@ async def queue_list(_, message):
     queue = db["queue"]
     if queue.empty():
         return await message.reply_text(
-            "__**Queue Is Empty.**__"
+            "__**Queue is empty.**__"
         )
     if (
         len(message.text.split()) > 1
@@ -322,10 +322,10 @@ async def clear_queue(_, message):
     if ("queue" not in db or db["queue"].empty()) and (
         "playlist" not in db or not db["playlist"]
     ):
-        return await message.reply_text("**Queue is Already Empty**")
+        return await message.reply_text("**Queue is already empty**")
     db["playlist"] = False
     db["queue"] = asyncio.Queue()
-    await message.reply_text("**Successfully Cleared the Queue**")
+    await message.reply_text("**Successfully cleared the queue**")
 
 
 @app.on_message(
